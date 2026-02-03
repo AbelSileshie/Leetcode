@@ -1,5 +1,4 @@
-SELECT name AS Employee
-FROM Employee e
-WHERE managerID IS NOT NULL
-  AND salary > (SELECT salary FROM Employee WHERE id = e.managerID)
-ORDER BY name;
+SELECT e.name AS Employee
+FROM Employee AS e
+INNER JOIN Employee AS m ON e.managerID = m.id
+WHERE e.salary > m.salary;
